@@ -30,7 +30,8 @@ Version: {revnumber} +
 
 toc::[]
 
-== Vorwort
+== Einführung
 
-Python ist eine dynamisch Typisierte, Interpretierte, objektorientierte Scriptsprache. Die folgenden Seiten enstehen Unterrichtsbegleitend und sind als Mitschrift gedacht. Dieses Dokument erhebt keinen Anspruch auf Vollständigkeit. Am Ende des Dokumentes finden Sie weiterführende Links.
+In diesem Verzeichnis finden Sie alle Programmierbeispiele. +
+Dateien deren Name mit einem Punkt anfängt sind Konfigurationsdateien und steuern das Verhalten bestimmter Programme. Sie sind für die Funktionsfähigkeit der Progamme in der Regel nicht notwendig.
 
