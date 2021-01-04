@@ -1,0 +1,36 @@
+= Python Einführung
+:doctype: article
+:reproducible:
+:lang: de, en
+:source-highlighter: rouge
+:listing-caption: Listing
+:encoding: utf-8
+:keywords: python
+:revnumber: 0.1.0
+:revdate: 05.01.2021
+:revremark: draft
+:copyright: [Z]
+:author: jz
+:email: jz@mgeg.de
+:toc: macro
+:toc-title: Table of Content
+:toclevels: 4
+:description: Python, Vorkurs
+:icons: font
+:icon-set: fas
+:imagesdir: ./img
+:theme: foundation
+:experimental:
+
+Copyright: (C) by {copyright} +
+Author: {author} +
+eMail: {email} +
+Version: {revnumber} +
+// vim set: syntax=asciidoc ts=2 sw=2 expandtab foldmethod=indent
+
+toc::[]
+
+== Vorwort
+
+Python ist eine dynamisch Typisierte, Interpretierte, objektorientierte Scriptsprache. Die folgenden Seiten enstehen Unterrichtsbegleitend und sind als Mitschrift gedacht. Dieses Dokument erhebt keinen Anspruch auf Vollständigkeit. Am Ende des Dokumentes finden Sie weiterführende Links.
+
