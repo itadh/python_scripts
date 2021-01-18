@@ -27,7 +27,7 @@ while result != 4:
                     result = result + 1
             
     if result == 4:
-        print('Alles gut')
+        print(f'Die Eingabe {eingabe} ist eine gültige IPv4 Adresse.')
     else:
-        print('Ihre Eingabe ist keine gültige IPv4 Adresse.')
+        print(f'UNGÜLTIG!! Die Eingabe {eingabe} ist keine gültige IPv4 Adresse.')
 
