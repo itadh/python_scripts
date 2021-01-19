@@ -1,3 +1,4 @@
 #!/usr/bin/python3
-for nummer in range(1, 10, 5):
-    print(nummer)
+for teil in range(20, 0, -2):
+    print(teil)
+
