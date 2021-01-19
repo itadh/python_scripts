@@ -7,15 +7,18 @@ eingabe = int(eingabe)
 startwert1 = 0
 startwert2 = 1
 
-zaehler = 0
-while zaehler < eingabe:
-    print(f'Durchlauf {zaehler}: {startwert1}')
-    if zaehler < eingabe:
-        ergebnis = startwert1 + startwert2
-        startwert1 = startwert2
-        startwert2 = ergebnis
-        zaehler = zaehler + 1
-#    print(f'Durchlauf {zaehler}: {ergebnis}')
+zaehler = 1
+while zaehler < eingabe - 1:
+   ergebnis = startwert1 + startwert2
+   if zaehler == 1:
+       gesamtergebnis = f'{startwert1},{startwert2},{ergebnis}'
+   else:
+       gesamtergebnis = f'{gesamtergebnis},{ergebnis}'
+   startwert1 = startwert2
+   startwert2 = ergebnis
+   zaehler = zaehler + 1
+print(f'Fibonacci-Folge: {gesamtergebnis}')
+
 
 # zaehler = 0
 # startwert1 = 0
