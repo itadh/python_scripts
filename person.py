@@ -3,6 +3,8 @@
 # author: jz@mgeg.de
 # change: 21.01.2021
 #
+import os
+os.system('clear')
  
 file_data = '/home/tn/persons.list'
 
@@ -23,11 +25,12 @@ def show(data, multi_line, counter):
 
 # funktion hinzufuegen
 def add_person(persons):
-    _person = dict()
-    _person['first'] = input('Bitte geben Sie den Vornamen an: ')
-    _person['last'] = input('Bitte geben Sie den Nachnamen an: ')
-    _person['city'] = input('Bitte geben Sie die Stadt an: ')
-    persons.append(_person)
+    os.system('clear')
+    person = dict()
+    person['first'] = input('Bitte geben Sie den Vornamen an: ')
+    person['last'] = input('Bitte geben Sie den Nachnamen an: ')
+    person['city'] = input('Bitte geben Sie die Stadt an: ')
+    persons.append(person)
 
 
 # Daten aus Datei lesen
@@ -42,9 +45,10 @@ def read_file(file, persons):
 
 # Datensatz loeschen
 def del_person(persons):
+    os.system('clear')
     counter = 0
-    for _person in persons:
-        show(_person, False, counter)
+    for person in persons:
+        show(person, False, counter)
         counter += 1
     del_dataset = input('Welchen Datensatz möchten Sie löschen: ')
     del persons[int(del_dataset)]
@@ -53,9 +57,19 @@ def del_person(persons):
 
 # Daten in Datei schreiben
 def write_file(file, persons):
+    keys = list()
+    # hole alle Daten aus der Datei
+    with open(file, 'r') as fh:
+        for line in fh.readlines():
+            keys.append(line[:-1])
     with open(file, 'a') as fh:
-        for _person in persons:
-            fh.writelines(f'{_person["first"]};{_person["last"]};{_person["city"]}\n')
+        for person in persons:
+            print(f'>{person["first"]};{person["last"]};{person["city"]}')
+            if f'{person["first"]};{person["last"]};{person["city"]}' in keys:
+                print(person)
+                continue
+            fh.writelines(f'{person["first"]};{person["last"]};{person["city"]}\n')
+            print('WRITE')
 
 
 # get person data
@@ -83,9 +97,10 @@ while True:
 
     # Daten anzeigen
     if action == 'z':
+        os.system('clear')
         counter = 0
-        for _person in persons:
-            show(_person, True, counter)
+        for person in persons:
+            show(person, True, counter)
             counter += 1
 
     # Daten in Datei schreiben
