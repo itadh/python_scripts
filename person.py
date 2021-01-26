@@ -9,6 +9,17 @@ file_data = '/home/tn/persons.list'
 persons = list()
 action = True
 
+
+def show(data, multi_line, counter):
+    if multi_line is True:
+        print('-' * 66)
+        print(f'Vorname: {data["first"]}')
+        print(f'Nachname: {data["last"]}')
+        print(f'Stadt: {data["city"]}')
+    else:
+        print(f'{counter}: {data["first"]} - {data["last"]} - {data["city"]}')
+
+
 # get person data
 while True:
     print('-' * 30, 'MENU', '-' * 30)
@@ -22,7 +33,6 @@ while True:
 
     # Datensatz anlegen
     if action == 'a':
-#        print(f'Sie drückten "{action}"')
         _person = dict()
         _person['first'] = input('Bitte geben Sie den Vornamen an: ')
         _person['last'] = input('Bitte geben Sie den Nachnamen an: ')
@@ -31,7 +41,6 @@ while True:
 
     # Daten aus Datei einlesen
     if action == 'e':
-#        print(f'Sie drückten "{action}"')
         with open(file_data, 'r') as fh:
             for line in fh.readlines():
                 person = dict()
@@ -44,15 +53,35 @@ while True:
 #                person['last'] = _person[1]
 #                person['city'] = _person[2]
 
+    # Datensatz löschen
+    if action == 'd':
+        counter = 0
+#        new_persons = list()
+        for _person in persons:
+#            print('-' * 66)            
+#            print(f'ID: {counter}')
+#            print(f'Vorname: {_person["first"]}')
+#            print(f'Nachname: {_person["last"]}')
+#            print(f'Stadt: {_person["city"]}')
+#            print('')
+            show(_person, False, counter)
+            counter += 1
+        del_dataset = input('Welchen Datensatz möchten Sie löschen: ')
+        del persons[int(del_dataset)]
+#        counter2 = 0
+#        for _person in persons:
+#            if int(del_dataset) != counter2:
+#                new_persons.append(_person)
+#            counter2 += 1
+#        persons = new_persons
+        print(persons)
+
     # Daten anzeigen
     if action == 'z':
- #       print(f'Sie drückten "{action}"')
+        counter = 0
         for _person in persons:
-            print('-' * 66)
-            print(f'Vorname: {_person["first"]}')
-            print(f'Nachname: {_person["last"]}')
-            print(f'Stadt: {_person["city"]}')
-            print('')
+            show(_person, True, counter)
+            counter += 1
 
     # Daten in Datei schreiben
     if action == 's':
@@ -67,31 +96,4 @@ while True:
         break
 
 print('Das Program wurde erfolgreich beendet.')
-
-
-#    person = dict()
-#    person['first'] = input('Bitte geben Sie den Vornamen an: ')
-#    person['last'] = input('Bitte geben Sie den Nachnamen an: ')
-#    person['city'] = input('Bitte geben Sie die Stadt an: ')
-#    persons.append(person)
-#    next_action = input('Wollen Sie eine weitere Person erfassen? [j|n]: ')
-#    if next_action != 'j':
-#        action = False
-#
-# save the person list
-#with open(file_data, 'a') as fh:
-#    fh.writelines(f'{persons}')
-#
-#print(persons)
-
-
-# Vorname: Fred
-# Nachname: Feuerstein
-# Stadt: Bonn
-#
-# Vorname: ...
-
-# Vorname;Nachname;Stadt
-# Fred;Feuerstein;Bonn
-# Joe;Doe;Essen
 
