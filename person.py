@@ -10,6 +10,7 @@ persons = list()
 action = True
 
 
+# funktion show
 def show(data, multi_line, counter):
     if multi_line is True:
         print('-' * 66)
@@ -18,6 +19,43 @@ def show(data, multi_line, counter):
         print(f'Stadt: {data["city"]}')
     else:
         print(f'{counter}: {data["first"]} - {data["last"]} - {data["city"]}')
+
+
+# funktion hinzufuegen
+def add_person(persons):
+    _person = dict()
+    _person['first'] = input('Bitte geben Sie den Vornamen an: ')
+    _person['last'] = input('Bitte geben Sie den Nachnamen an: ')
+    _person['city'] = input('Bitte geben Sie die Stadt an: ')
+    persons.append(_person)
+
+
+# Daten aus Datei lesen
+def read_file(file, persons):
+    with open(file, 'r') as fh:
+        for line in fh.readlines():
+            person = dict()
+            line = line[0:-1]
+            person['first'], person['last'], person['city'] = line.split(';')
+            persons.append(person)
+
+
+# Datensatz loeschen
+def del_person(persons):
+    counter = 0
+    for _person in persons:
+        show(_person, False, counter)
+        counter += 1
+    del_dataset = input('Welchen Datensatz möchten Sie löschen: ')
+    del persons[int(del_dataset)]
+    print(persons)
+
+
+# Daten in Datei schreiben
+def write_file(file, persons):
+    with open(file, 'a') as fh:
+        for _person in persons:
+            fh.writelines(f'{_person["first"]};{_person["last"]};{_person["city"]}\n')
 
 
 # get person data
@@ -33,48 +71,15 @@ while True:
 
     # Datensatz anlegen
     if action == 'a':
-        _person = dict()
-        _person['first'] = input('Bitte geben Sie den Vornamen an: ')
-        _person['last'] = input('Bitte geben Sie den Nachnamen an: ')
-        _person['city'] = input('Bitte geben Sie die Stadt an: ')
-        persons.append(_person)
+        add_person(persons)
 
     # Daten aus Datei einlesen
     if action == 'e':
-        with open(file_data, 'r') as fh:
-            for line in fh.readlines():
-                person = dict()
-                line = line[0:-1]
-                person['first'], person['last'], person['city'] = line.split(';')
-                persons.append(person)
-#            print(persons)
-#                _person = line.split(';')
-#                person['first'] = _person[0]
-#                person['last'] = _person[1]
-#                person['city'] = _person[2]
+        read_file(file_data, persons)
 
     # Datensatz löschen
     if action == 'd':
-        counter = 0
-#        new_persons = list()
-        for _person in persons:
-#            print('-' * 66)            
-#            print(f'ID: {counter}')
-#            print(f'Vorname: {_person["first"]}')
-#            print(f'Nachname: {_person["last"]}')
-#            print(f'Stadt: {_person["city"]}')
-#            print('')
-            show(_person, False, counter)
-            counter += 1
-        del_dataset = input('Welchen Datensatz möchten Sie löschen: ')
-        del persons[int(del_dataset)]
-#        counter2 = 0
-#        for _person in persons:
-#            if int(del_dataset) != counter2:
-#                new_persons.append(_person)
-#            counter2 += 1
-#        persons = new_persons
-        print(persons)
+        del_person(persons)
 
     # Daten anzeigen
     if action == 'z':
@@ -85,10 +90,7 @@ while True:
 
     # Daten in Datei schreiben
     if action == 's':
-        print(f'Sie drückten "{action}"')
-        with open(file_data, 'a') as fh:
-            for _person in persons:
-                fh.writelines(f'{_person["first"]};{_person["last"]};{_person["city"]}\n')
+        write_file(file_data, persons)
 
     # Program beenden
     if action == 'q':
