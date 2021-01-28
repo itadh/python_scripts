@@ -1,0 +1,86 @@
+#!/usr/bin/python3
+
+"""
+== Einkaufsliste
+
+
+=== Produkt
+
+==== Methoden
+
+* Anlegen
+* Entfernen
+* Aendern
+* Anzeigen
+
+==== Attribute
+
+* Name
+* Preis
+* Einheit
+** erweiterte Attribute
+
+
+=== Warenkorb
+
+==== Methoden
+
+* Anzeigen
+* Hinzufuegen
+* Entfernen
+* Aendern
+
+==== Attribute
+
+* Liste mir Produkten
+
+
+"""
+
+
+class Product():
+    def create(self):
+        pass
+    def remove(self):
+        pass
+    def modify(self):
+        pass
+    def show(self):
+        pass
+    def load(self):
+        pass
+    def save(self):
+        pass
+
+
+class Cart():
+    def add(self):
+        pass
+    def remove(self):
+        pass
+    def modify(self):
+        pass
+    def show(self):
+        pass
+    def load(self):
+        pass
+    def save(self):
+        pass
+
+
+* Warenkorb Produkte hinzufügen
+** Daten sichern 
+* Warenkorb Produkte entfernen
+** Daten sichern 
+
+* Produkt anlegen
+** Daten sichern 
+* Produkt loeschen
+** Daten sichern 
+* Produkt anpassen
+** Daten sichern 
+* Produkt anzeigen
+** Daten sichern 
+
+
+

@@ -4,10 +4,6 @@
 
 class fahrzeug():
 
-    name = 'auto'
-    farbe = 'rot'
-    farben = ['rot', 'gruen', 'blau', 'gelb', 'schwarz',' weiss']
-
     def vorwaerts_bewegen(self, geschwindigkeit):
         print(f'vorwaerts fahren mit {geschwindigkeit}')
 
@@ -25,11 +21,11 @@ golf = fahrzeug()
 golf.set_farbe('weiss')
 golf.get_farbe()
 
-golf.vorwaerts_bewegen('90km/h')
-golf.farbe = 'gruen'
-print(golf.farbe)
-
-
 bmw = fahrzeug()
-print(bmw.farbe)
+bmw.set_farbe('rot')
+bmw.get_farbe()
+
+
+golf.get_farbe()
+
 
