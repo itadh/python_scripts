@@ -1,33 +1,16 @@
 #!/usr/bin/python3
 
 import os
-#import lib.Product as product
 import lib.Products as products
+import lib.Cart as cart
 
 
 os.system('clear')
 
-"""
-* Warenkorb Produkte hinzufügen
-** Daten sichern 
-* Warenkorb Produkte entfernen
-** Daten sichern 
-
-* Produkt anlegen
-** Daten sichern 
-* Produkt loeschen
-** Daten sichern 
-* Produkt anpassen
-** Daten sichern 
-* Produkt anzeigen
-** Daten sichern 
-"""
-
 # Liste aller kaufbaren Produkte
 products = products.Products('/home/tn/products.lis')
-#products.load('/home/tn/products.lis')
 # Liste der Produkte die ich kaufen möchte
-to_buy_products = list()
+cart = cart.Cart('/home/tn/cart.lis')
 
 
 while True:
@@ -36,6 +19,10 @@ while True:
     print('[E] Produkt entfernen')
     print('[S] Produkt speichern')
     print('[Z] Produkte anzeigen')
+    print('[a] Einkaufsliste: Produkt hinzufuegen')
+    print('[e] Einkaufsliste: Produkt entfernen')
+    print('[s] Einkaufsliste speichern')
+    print('[z] Einkaufsliste anzeigen')
     print('[q] Program beenden')
     action = input('Was möchten Sie machen: ')
 
@@ -68,6 +55,27 @@ while True:
     if action == 'S':
         products.save()
 
+    # Einkaufsliste: Produkt hinzufuegen
+    if action == 'a':
+        counter = 0
+        for product in products.lists():
+            print(f'{counter}: {product["name"]}')
+            counter += 1
+        product_name = input('Welches Produkt möchten Sie in den Warenkorb legen: ')
+        product_amount = input('Wieviele Produkte möchten Sie in den Warenkorb legen: ')
+        cart.create(product_name, product_amount)
+ 
+    # Einkaufsliste: Produkt entfernen
+    if action == 'e':
+        cart.delete()
+
+    # Einkaufsliste speichern
+    if action == 's':
+        cart.save()
+
+    # Einkaufsliste anzeigen
+    if action == 'z':
+        cart.show()
 
 print('Viel Spass beim einkaufen.')
 exit()

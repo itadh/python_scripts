@@ -1,8 +1,8 @@
 """
-Liste mit kaufbaren Produkten
+Einkaufsliste
 """
 
-class Products ():
+class Cart ():
 
 
     def __init__(self, file_data):
@@ -11,42 +11,35 @@ class Products ():
 
         :param  file_data: Datei in der die Daten gespeichert sind
         """
-        self.products = list()
+        self.cart = list()
         self.file_data = file_data
         with open(self.file_data, 'r') as fh:
             for line in fh.readlines():
                 line = line[:-1]
                 part = line.split(';')
-                self.products.append({'name': part[0], 'price': part[1], 'size': part[2]})
+                self.cart.append({'name': part[0], 'amount': part[1]})
 
 
-    def create(self, name=None, price=None, size=None):
+    def create(self, name=None, amount=None):
         """
         Haengt ein neues Produkt an die Liste
 
         :param  name: Name des Produktes
-        :param  prize: Preis des Produktes
-        :param  size: Einheit des Produktes
+        :param  amount : Anzahl des Produktes
         """
-        if None in (name, price, size):
+        if None in (name, amount):
             print('missing argument')
+        self.cart.append({'name': name, 'amount': amount})
         return(True)
-
-
-    def lists(self):
-        """
-        :return  products:  gibt eine Liste mit den Produkten zurueck
-        """
-        return(self.products)
 
 
     def save(self):
         """
-        speichert die Produktliste in eine Datei
+        speichert die Einkaufsliste in eine Datei
         """
         with open(self.file_data, 'w') as fh:
-            for product in self.products:
-                fh.writelines(f'{product["name"]};{product["price"]};{product["size"]}\n')
+            for cart in self.cart:
+                fh.writelines(f'{cart["name"]};{cart["amount"]}\n')
 
 
     def show(self, id=None):
@@ -56,13 +49,12 @@ class Products ():
         zeige Produkte an
         """
         counter = 0
-        for product in self.products:
+        for product in self.cart:
             print('-' * 60)
             if id is True:
                 print(f'ID:      {counter}')               
             print(f'Name:    {product["name"]}')
-            print(f'Preis:   {product["price"]}')
-            print(f'Einheit: {product["size"]}')
+            print(f'Menge:   {product["amount"]}')
             print('')
             counter += 1
 
@@ -72,7 +64,7 @@ class Products ():
         entferne ein Produkt
         """
         self.show(id=True)
-        item_to_delete = int(input('Welches Produkt wollen Sie loeschen: '))
-        del self.products[item_to_delete]
+        item_to_delete = int(input('Welches Produkt wollen Sie entfernen: '))
+        del self.cart[item_to_delete]
 
 
